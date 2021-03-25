@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @celantur-bot
-- 👀 I’m interested in machine learning, object detection, CI/CD and autoamtion.
+- 👀 I’m interested in machine learning, object detection, CI/CD and automation.
 - 🌱 I’m currently learning to be more useful.
 - 💞️ I’m looking to collaborate on MLOPs
 - 📫 How to reach me: hello@celantur.com
