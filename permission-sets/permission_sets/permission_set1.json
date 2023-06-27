@@ -1,0 +1,40 @@
+{
+    "name": "Example_Permission_Set1",
+    "description": "For testing Permission set updates",
+    "session_duration": "PT6H",
+    "accounts": [
+        "management",
+        "celantur-orginal"
+    ],
+    "groups": [
+        "AdminTest",
+        "ReadOnly"
+    ],
+    "managed_policies": [
+        "arn:aws:iam::aws:policy/job-function/ViewOnlyAccess"
+    ],
+    "inline_policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "ManageEc2",
+                "Effect": "Allow",
+                "Action": [
+                    "ec2:RebootInstances",
+                    "ec2:StartInstances",
+                    "ec2:StopInstances"
+                ],
+                "Resource": "*"
+            },
+            {
+                "Sid": "AllowS3Objects",
+                "Effect": "Allow",
+                "Action": [
+                    "s3:PutObject",
+                    "s3:GetObject"
+                ],
+                "Resource": "*"
+            }
+        ]
+    }
+}

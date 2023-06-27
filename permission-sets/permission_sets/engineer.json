@@ -1,0 +1,208 @@
+{
+    "name": "Example_Permission_Set2",
+    "description": "For testing Permission set updates",
+    "session_duration": "PT6H",
+    "accounts": [
+        "management",
+        "celantur-orginal"
+    ],
+    "groups": [
+        "AdminTest",
+        "ReadOnly"
+    ],
+    "managed_policies": [
+        "arn:aws:iam::aws:policy/job-function/ViewOnlyAccess"
+    ],
+    "inline_policy": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:GetSAMLProvider",
+                        "iam:GetPolicy",
+                        "iam:GetPolicyVersion",
+                        "iam:GetRole",
+                        "iam:GetRolePolicy",
+                        "iam:ListAttachedRolePolicies",
+                        "iam:ListInstanceProfiles",
+                        "iam:ListRoles",
+                        "iam:ListRolePolicies",
+                        "iam:ListOpenIdConnectProviders",
+                        "iam:ListSAMLProviders"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:GetObject",
+                        "s3:PutObject",
+                        "s3:DeleteObject",
+                        "s3:ListBucket"
+                    ],
+                    "NotResource": [
+                        "arn:aws:s3:::celantur",
+                        "arn:aws:s3:::celantur/*",
+                        "arn:aws:s3:::celantur-customers-exchange",
+                        "arn:aws:s3:::celantur-customers-exchange/*",
+                        "arn:aws:s3:::celantur-customers-exchange-ap-southeast-1",
+                        "arn:aws:s3:::celantur-customers-exchange-ap-southeast-1/*",
+                        "arn:aws:s3:::celantur-geograma-exchange",
+                        "arn:aws:s3:::celantur-geograma-exchange/*",
+                        "arn:aws:s3:::celantur-ifsb-exchange",
+                        "arn:aws:s3:::celantur-ifsb-exchange/*",
+                        "arn:aws:s3:::celantur-navvis-exchange",
+                        "arn:aws:s3:::celantur-navvis-exchange/*",
+                        "arn:aws:s3:::celantur-strabag-exchange",
+                        "arn:aws:s3:::celantur-strabag-exchange/*"
+                    ]
+                },
+                {
+                    "Action": [
+                        "acm:ListCertificates",
+                        "apigateway:*",
+                        "application-autoscaling:DeleteScalingPolicy",
+                        "application-autoscaling:DeregisterScalableTarget",
+                        "application-autoscaling:DescribeScal*",
+                        "application-autoscaling:PutScalingPolicy",
+                        "application-autoscaling:RegisterScalableTarget",
+                        "autoscaling:*",
+                        "batch:*",
+                        "cloudformation:*",
+                        "cloudwatch:*",
+                        "cognito-identity:*",
+                        "cognito-idp:*",
+                        "cognito-sync:*",
+                        "datapipeline:ActivatePipeline",
+                        "datapipeline:CreatePipeline",
+                        "datapipeline:DeletePipeline",
+                        "datapipeline:Describe*",
+                        "datapipeline:GetPipelineDefinition",
+                        "datapipeline:ListPipelines",
+                        "datapipeline:PutPipelineDefinition",
+                        "datapipeline:QueryObjects",
+                        "dax:*",
+                        "dynamodb:*",
+                        "ec2:*",
+                        "ecr:*",
+                        "ecs:Describe*",
+                        "ecs:List*",
+                        "eks:DescribeCluster",
+                        "eks:ListClusters",
+                        "elasticloadbalancing:*",
+                        "health:*",
+                        "kinesis:ListStreams",
+                        "kinesis:DescribeStream*",
+                        "kms:DescribeKey",
+                        "kms:ListAliases",
+                        "lambda:*",
+                        "logs:CreateLog*",
+                        "logs:Describe*",
+                        "logs:Get*",
+                        "logs:FilterLogEvents",
+                        "logs:StartQuery",
+                        "logs:StopQuery",
+                        "logs:PutLogEvents",
+                        "logs:TestMetricFilter",
+                        "mobiletargeting:GetApps",
+                        "resource-groups:ListGroup*",
+                        "resource-groups:GetGroup*",
+                        "resource-groups:DeleteGroup",
+                        "resource-groups:CreateGroup",
+                        "secretsmanager:*",
+                        "ses:ListIdentities",
+                        "ses:GetIdentityVerificationAttributes",
+                        "sns:CreateTopic",
+                        "sns:DeleteTopic",
+                        "sns:GetSMSSandboxAccountStatus",
+                        "sns:ListPlatformApplications",
+                        "sns:ListSubscription*",
+                        "sns:ListTopics",
+                        "sns:Subscribe",
+                        "sns:Unsubscribe",
+                        "sns:SetTopicAttributes",
+                        "ssm:GetParameter*",
+                        "sqs:*",
+                        "tag:GetResources"
+                ],
+                    "Effect": "Allow",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestedRegion": "eu-central-1"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": [
+                                "autoscaling.amazonaws.com",
+                                "cognito-idp.amazonaws.com",
+                                "ec2scheduled.amazonaws.com",
+                                "elasticloadbalancing.amazonaws.com",
+                                "email.cognito-idp.amazonaws.com",
+                                "replication.ecr.amazonaws.com",
+                                "spot.amazonaws.com",
+                                "spotfleet.amazonaws.com",
+                                "transitgateway.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:CreateServiceLinkedRole",
+                    "Resource": "arn:aws:iam::366816723974:role/service-role/AWSBatchServiceRole",
+                    "Condition": {
+                        "StringEquals": {
+                            "iam:AWSServiceName": "batch.amazonaws.com"
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:DeleteServiceLinkedRole",
+                        "iam:GetServiceLinkedRoleDeletionStatus"
+                    ],
+                    "Resource": [
+                        "arn:aws:iam::*:role/aws-service-role/cognito-idp.amazonaws.com/AWSServiceRoleForAmazonCognitoIdp*",
+                        "arn:aws:iam::*:role/aws-service-role/email.cognito-idp.amazonaws.com/AWSServiceRoleForAmazonCognitoIdpEmail*"
+                    ]
+                },
+                {
+                    "Action": "iam:PassRole",
+                    "Effect": "Allow",
+                    "Resource": "*",
+                    "Condition": {
+                        "StringLike": {
+                            "iam:PassedToService": [
+                                "application-autoscaling.amazonaws.com",
+                                "application-autoscaling.amazonaws.com.cn",
+                                "dax.amazonaws.com",
+                                "lambda.amazonaws.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": "iam:PassRole",
+                    "Resource": [
+                        "arn:aws:iam::*:role/service-role/AWSBatchServiceRole",
+                        "arn:aws:iam::*:role/ecsInstanceRole",
+                        "arn:aws:iam::*:instance-profile/ecsInstanceRole",
+                        "arn:aws:iam::*:role/iaws-ec2-spot-fleet-role",
+                        "arn:aws:iam::*:role/aws-ec2-spot-fleet-role",
+                        "arn:aws:iam::366816723974:role/cdk-hnb659fds-*-role-366816723974-eu-central-1"
+                    ]
+                }
+            ]
+        
+    }
+}
